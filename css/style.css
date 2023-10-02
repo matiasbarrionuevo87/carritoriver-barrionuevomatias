@@ -27,10 +27,10 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    float: left; /* Coloca los productos en la parte izquierda */
-    width: 70%; /* Ocupa el 70% del ancho de la página */
+    float: left; 
+    width: 70%; 
     padding: 20px;
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    box-sizing: border-box;
 }
 
 .producto {
@@ -43,22 +43,22 @@ main {
 }
 
 #carrito {
-    float: left; /* Coloca el carrito en la parte izquierda */
-    width: 30%; /* Ocupa el 30% del ancho de la página */
+    float: left; 
+    width: 30%; 
     padding: 20px;
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
-    background-color: red; /* Fondo gris claro para el carrito */
+    box-sizing: border-box; 
+    background-color: red; 
     color: white;
     border-radius: 10px;
     width: 300px;
 }
 
-/* Estilo para el elemento de total en el carrito */
+
 #total {
-    clear: both; /* Evita que los elementos floten alrededor del total */
+    clear: both; 
     padding: 10px;
     box-sizing: border-box;
-    text-align: right; /* Alinea el total a la derecha */
+    text-align: right; 
     font-weight: bold;
     font-size: 40px;
     background-color: red;
