@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    background-color: red;
+}
+
+header h1 {
+    margin: 0;
+    background-color: red;
+}
+
+main {
+    padding: 20px;
+    background-color: white
+}
+
+#productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    float: left; /* Coloca los productos en la parte izquierda */
+    width: 70%; /* Ocupa el 70% del ancho de la página */
+    padding: 20px;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+.producto {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    width: 300px;
+}
+
+#carrito {
+    float: left; /* Coloca el carrito en la parte izquierda */
+    width: 30%; /* Ocupa el 30% del ancho de la página */
+    padding: 20px;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    background-color: red; /* Fondo gris claro para el carrito */
+    color: white;
+    border-radius: 10px;
+    width: 300px;
+}
+
+/* Estilo para el elemento de total en el carrito */
+#total {
+    clear: both; /* Evita que los elementos floten alrededor del total */
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: right; /* Alinea el total a la derecha */
+    font-weight: bold;
+    font-size: 40px;
+    background-color: red;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+footer p {
+    margin: 0;
+}
