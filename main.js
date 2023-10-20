@@ -1,53 +1,18 @@
-const productos = [
-    {
-        id: 1,
-        nombre: "Titular 23/24",
-        descripcion: "Camiseta Titular 23/24.",
-        precio: 30999.99,
-        imagen: "img/producto1.jpg"
-    },
-    {
-        id: 2,
-        nombre: "Suplente 23/24",
-        descripcion: "Suplente 23/24 Negra.",
-        precio: 29999.99,
-        imagen: "img/producto2.jpg"
-    },
-    {
-        id: 3,
-        nombre: "Alternativa 23/24",
-        descripcion: "Alternativa Roja 23/24.",
-        precio: 30000.00,
-        imagen: "img/producto3.jpg"
-    },
-    {
-        id: 4,
-        nombre: "Alternativa 23/24",
-        descripcion: "Alternativa Blanca 23/24.",
-        precio: 29999.99,
-        imagen: "img/producto4.jpg"
-    },
-    {
-        id: 5,
-        nombre: "Buzo Arquero 23/24",
-        descripcion: "Buzo Arquero 23/24 Naranja.",
-        precio: 27999.99,
-        imagen: "img/producto5.jpg"
-    },
-    {
-        id: 6,
-        nombre: "Campera Entrenamiento",
-        descripcion: "Campera Entrenamiento Negro.",
-        precio: 35999.99,
-        imagen: "img/producto6.jpg"
-    }
-];
-
-const carrito = []; // Array para almacenar productos en el carrito
+const productos = [];
+const carrito = [];
 
 const productosContainer = document.getElementById('productos');
 const carritoContainer = document.getElementById('carrito');
 const totalContainer = document.getElementById('total');
+
+// Utilizaremos fetch para cargar datos desde un archivo JSON
+fetch('productos.json')
+  .then(response => response.json())
+  .then(data => {
+    productos.push(...data.productos);
+    mostrarProductos();
+  })
+  .catch(error => console.error('Error al cargar los datos:', error));
 
 function mostrarProductos() {
     productos.forEach(producto => {
@@ -81,7 +46,7 @@ function eliminarDelCarrito(id) {
 }
 
 function mostrarCarrito() {
-    carritoContainer.innerHTML = ''; // Limpiar el contenido del carrito
+    carritoContainer.innerHTML = '';
 
     carrito.forEach(producto => {
         const carritoElement = document.createElement('div');
@@ -100,4 +65,51 @@ function mostrarTotal() {
     totalContainer.textContent = `Total: $${total.toFixed(2)}`;
 }
 
-mostrarProductos();
+function agregarAlCarrito(id) {
+    const productoSeleccionado = productos.find(producto => producto.id === id);
+
+    // Verificar si el producto ya está en el carrito
+    const productoEnCarrito = carrito.find(item => item.producto.id === id);
+
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad++; // Incrementar cantidad
+    } else {
+        carrito.push({ producto: productoSeleccionado, cantidad: 1 });
+    }
+
+    mostrarCarrito();
+    mostrarTotal();
+}
+
+function eliminarDelCarrito(id) {
+    const index = carrito.findIndex(item => item.producto.id === id);
+    if (index !== -1) {
+        if (carrito[index].cantidad > 1) {
+            carrito[index].cantidad--; // Decrementar cantidad
+        } else {
+            carrito.splice(index, 1);
+        }
+        mostrarCarrito();
+        mostrarTotal();
+    }
+}
+
+function mostrarCarrito() {
+    carritoContainer.innerHTML = '';
+    carrito.forEach(item => {
+        const carritoElement = document.createElement('div');
+        carritoElement.classList.add('carrito-item');
+        carritoElement.innerHTML = `
+            <h3>${item.producto.nombre} x${item.cantidad}</h3>
+            <p>Precio: $${(item.producto.precio * item.cantidad).toFixed(2)}</p>
+            <button onclick="eliminarDelCarrito(${item.producto.id})">-</button>
+            <button onclick="agregarAlCarrito(${item.producto.id})">+</button>
+        `;
+        carritoContainer.appendChild(carritoElement);
+    });
+}
+
+function mostrarTotal() {
+    const total = carrito.reduce((acc, item) => acc + item.producto.precio * item.cantidad, 0);
+    totalContainer.textContent = `Total: $${total.toFixed(2)}`;
+}

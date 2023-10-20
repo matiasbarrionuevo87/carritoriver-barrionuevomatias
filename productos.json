@@ -1,0 +1,47 @@
+{
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Titular 23/24",
+        "descripcion": "Camiseta Titular 23/24.",
+        "precio": 30999.99,
+        "imagen": "img/producto1.jpg"
+      },
+      {
+        "id": 2,
+        "nombre": "Suplente 23/24",
+        "descripcion": "Suplente 23/24 Negra.",
+        "precio": 29999.99,
+        "imagen": "img/producto2.jpg"
+      },
+      {
+        "id": 3,
+        "nombre": "Alternativa 23/24",
+        "descripcion": "Alternativa Roja 23/24.",
+        "precio": 30000.00,
+        "imagen": "img/producto3.jpg"
+      },
+      {
+        "id": 4,
+        "nombre": "Alternativa 23/24",
+        "descripcion": "Alternativa Blanca 23/24.",
+        "precio": 29999.99,
+        "imagen": "img/producto4.jpg"
+      },
+      {
+        "id": 5,
+        "nombre": "Buzo Arquero 23/24",
+        "descripcion": "Buzo Arquero 23/24 Naranja.",
+        "precio": 27999.99,
+        "imagen": "img/producto5.jpg"
+      },
+      {
+        "id": 6,
+        "nombre": "Campera Entrenamiento",
+        "descripcion": "Campera Entrenamiento Negro.",
+        "precio": 35999.99,
+        "imagen": "img/producto6.jpg"
+      }
+    ]
+  }
+  
